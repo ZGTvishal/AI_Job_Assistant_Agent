@@ -1,5 +1,13 @@
 from openai import OpenAI
-import re
+import os, re, json, requests
+from typing import List, Dict, Optional, Any, Tuple
+from dataclasses import dataclass, field
+from bs4 import BeautifulSoup
+from getpass import getpass
+from urllib.parse import urlparse
+import pathlib, tempfile, uuid, json
+from helper_functions import save_cover_letter_pdf
+
 client = OpenAI()
 
 
@@ -7,7 +15,7 @@ client = OpenAI()
 
 model="gpt-4o-mini"
 
-@datalass
+@dataclass
 class AgentMessage:
     role:str
     content = str
